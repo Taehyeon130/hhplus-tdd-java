@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static io.hhplus.tdd.point.Code.POINT_MIN;
 import static io.hhplus.tdd.point.Code.USER_ID_NOT_FOUND;
 
 
@@ -20,7 +21,7 @@ public class PointService {
   /*
    * 유저의 포인트 조회
    * */
-  UserPoint selectUserPointByUserId(Long userId) {
+  public UserPoint selectUserPointByUserId(Long userId) {
     //userId 유효성체크
     if(userId == null){
       throw new IllegalArgumentException(USER_ID_NOT_FOUND.getMessage());
@@ -55,7 +56,7 @@ public class PointService {
     lock.lock();
     try {
       if(amount < 0){
-        throw new IllegalArgumentException("충전 또는 사용 포인트가 0보다 작습니다.");
+        throw new IllegalArgumentException(POINT_MIN.getMessage());
       }
       pointHistoryTable.insert(userId, amount, type,0);
       return userPointTable.insertOrUpdate(userId, amount);

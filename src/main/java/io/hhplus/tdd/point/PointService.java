@@ -38,7 +38,7 @@ public class PointService {
   /*
   * 포인트 충전/이용 내역 조회
   * */
-  List<PointHistory> selectAllHistoryByUserId(Long userId) {
+  public List<PointHistory> selectAllHistoryByUserId(Long userId) {
     //userId 유효성 체크
     if(userId == null){
       throw new IllegalArgumentException(USER_ID_NOT_FOUND.getMessage());
@@ -49,7 +49,7 @@ public class PointService {
   /*
   * 포인트 충전, 사용
   * */
-  UserPoint chargeUsePoint(Long userId, Long amount, TransactionType type) {
+  public UserPoint chargeUsePoint(Long userId, Long amount, TransactionType type) {
     if(userId == null){
       throw new IllegalArgumentException(USER_ID_NOT_FOUND.getMessage());
     }

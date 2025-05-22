@@ -19,7 +19,7 @@ public class PointController {
     @GetMapping("{id}")
     public UserPoint point(
             @PathVariable long id
-    )  {
+    ) {
         return pointService.selectUserPointByUserId(id);
     }
 
